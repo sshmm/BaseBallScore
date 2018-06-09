@@ -304,12 +304,6 @@ public class MainActivity extends AppCompatActivity {
         boolean inningState = topOfInning;
         topOfInning ^= true; //three outs" half inning has ended"
 
-        // display the current half of the inning "Top" or Bottom
-        if (topOfInning)
-            setInningHalf("T");
-        else
-            setInningHalf("B");
-
         //if this is the bottom of the inning go to the next inning
         if (!inningState)
             inningNumber++;
@@ -335,6 +329,13 @@ public class MainActivity extends AppCompatActivity {
         //reset the out count
         outCount = 0;
         outCountDisplay(outCount);
+
+        // display the current half of the inning "Top" or Bottom
+        if (!finalScore)
+            if (topOfInning )
+                setInningHalf("T");
+            else
+                setInningHalf("B");
 
         //if the game isn't finished move to the next inning
         if (!finalScore)
@@ -377,6 +378,7 @@ public class MainActivity extends AppCompatActivity {
         outCountDisplay(outCount);
         inningCountDisplay(inningNumber);
         setFinalScore(">>>>");
+        setInningHalf("T");
 
 
     }
