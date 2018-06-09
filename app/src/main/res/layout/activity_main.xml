@@ -33,6 +33,7 @@
                 android:textSize="35sp" />
 
             <TextView
+                android:id="@+id/Guest_Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/GUEST_VIEW"
@@ -40,7 +41,7 @@
                 android:background="#000000"
                 android:text="0"
                 android:textColor="#990000"
-                android:textSize="56sp" />
+                android:textSize="40sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -68,9 +69,10 @@
                 android:background="#000000"
                 android:text="0"
                 android:textColor="#990000"
-                android:textSize="56sp" />
+                android:textSize="40sp" />
 
             <TextView
+                android:id="@+id/Top_Bottom_Text"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/INNING_VIEW"
@@ -91,12 +93,13 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
                 android:layout_centerHorizontal="true"
-                android:text="Guest"
+                android:text="HOME"
                 android:textAllCaps="true"
                 android:textColor="#ffffff"
                 android:textSize="35sp" />
 
             <TextView
+                android:id="@+id/Home_Score"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/HOME_VIEW"
@@ -104,7 +107,7 @@
                 android:background="#000000"
                 android:text="0"
                 android:textColor="#990000"
-                android:textSize="56sp" />
+                android:textSize="40sp" />
         </RelativeLayout>
 
     </LinearLayout>
@@ -136,6 +139,7 @@
                 android:textSize="25sp" />
 
             <TextView
+                android:id="@+id/Ball_Count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/BALLVIEW"
@@ -143,7 +147,7 @@
                 android:background="#000000"
                 android:text="0"
                 android:textColor="#990000"
-                android:textSize="56sp" />
+                android:textSize="40sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -163,6 +167,7 @@
                 android:textSize="25sp" />
 
             <TextView
+                android:id="@+id/Strike_Count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/STRIKE_VIEW"
@@ -170,7 +175,7 @@
                 android:background="#000000"
                 android:text="0"
                 android:textColor="#990000"
-                android:textSize="56sp" />
+                android:textSize="40sp" />
         </RelativeLayout>
 
         <RelativeLayout
@@ -190,6 +195,7 @@
                 android:textSize="25sp" />
 
             <TextView
+                android:id="@+id/Out_Count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/OUT_VIEW"
@@ -197,23 +203,35 @@
                 android:background="#000000"
                 android:text="0"
                 android:textColor="#990000"
-                android:textSize="56sp" />
+                android:textSize="40sp" />
         </RelativeLayout>
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/final_score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Ball_strike_count"
+        android:layout_centerHorizontal="true"
+        android:background="#000000"
+        android:text="FINAL"
+        android:textColor="#990000"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/Ball_strike"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/Ball_strike_count"
-        android:layout_margin="20dp">
+        android:layout_below="@+id/final_score"
+        android:layout_margin="10dp">
 
         <Button
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:onClick="setBallCount"
             android:text="Ball" />
 
         <Button
@@ -222,6 +240,7 @@
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:layout_weight="1"
+            android:onClick="setOutCount"
             android:text="Out" />
 
         <Button
@@ -229,28 +248,19 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
             android:layout_weight="1"
+            android:onClick="setStrikeCount"
             android:text="Strike" />
 
     </LinearLayout>
 
 
-    <ToggleButton
-        android:id="@+id/toggleButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/Ball_strike"
-        android:layout_centerHorizontal="true"
-        android:text="ToggleButton"
-        android:textOff="Top"
-        android:textOn="Bottom" />
 
     <LinearLayout
 
         android:id="@+id/score_buttons"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/toggleButton"
-        android:layout_marginTop="15dp"
+        android:layout_below="@id/Ball_strike"
         android:orientation="horizontal">
 
         <LinearLayout
@@ -264,13 +274,34 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="GUEST" />
+                android:fontFamily="sans-serif-medium"
+                android:text="GUEST"
+                android:textColor="#616161"
+                android:textSize="14sp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="setGuestScore"
                 android:text="RUN" />
 
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setGuestScoreTwo"
+                android:text="two" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setGuestScoreThree"
+                android:text="three" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setGuestScoreGrand"
+                android:text="Grand" />
 
         </LinearLayout>
 
@@ -291,12 +322,34 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="HOME" />
+                android:fontFamily="sans-serif-medium"
+                android:text="HOME"
+                android:textColor="#616161"
+                android:textSize="14sp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:onClick="setHomeScore"
                 android:text="RUN" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setHomeScoreTwo"
+                android:text="two" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setHomeScoreThree"
+                android:text="three" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:onClick="setHomeScoreGrand"
+                android:text="Grand" />
 
         </LinearLayout>
 
@@ -312,6 +365,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:onClick="resetBoard"
             android:text="RESET" />
     </LinearLayout>
 
